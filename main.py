@@ -1,9 +1,19 @@
 n = int(input())
-data = input().split()
-checked_numbers = [0]*n
-print(0,1,2,3,4,5,6,7)
-for number in data:
-    if checked_numbers[int(number)]:
-        print(number)
+data = list(map(int, input().split()))
+
+slow = n - 1 # число n-1 точно не в цикле (нет указателя на него)
+fast = n - 1
+while True:
+    slow = data[slow]
+    fast = data[data[fast]]
+    if slow == fast:
         break
-    checked_numbers[int(number)] = 1
+
+a = slow
+
+b = n-1
+while a != b:
+    a = data[a]
+    b = data[b]
+
+print(a)
